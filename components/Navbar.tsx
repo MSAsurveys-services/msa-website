@@ -1,46 +1,73 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold tracking-wide">
-          MSA GROUP
-        </Link>
-        <nav className="flex space-x-6 text-sm font-medium items-center">
-          <Link href="/" className="hover:text-blue-400">Home</Link>
-          <Link href="/about" className="hover:text-blue-400">About Us</Link>
-          <Link href="/services" className="hover:text-blue-400">Services</Link>
+    <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-20 items-center">
           
-          {/* Primary Hub Dropdown */}
-          <div className="relative group cursor-pointer py-2">
-            <span className="hover:text-blue-400">Ports & Countries ▼</span>
-            <div className="absolute hidden group-hover:block bg-slate-800 text-white rounded shadow-lg py-2 w-64 left-0">
-              <Link href="/ports/port" className="block px-4 py-2 font-semibold text-blue-400 hover:bg-slate-700">
-                View All 42 Operating Ports →
-              </Link>
-              <div className="border-t border-slate-700 my-1"></div>
-              <span className="block px-4 py-1 text-xs text-gray-400 uppercase tracking-wider font-bold">Primary Hub</span>
-              <Link href="/ports/douala" className="block px-4 py-2 hover:bg-slate-700">Douala (Cameroon)</Link>
-              <Link href="/ports/port" className="block px-4 py-2 hover:bg-slate-700">Kribi (Cameroon)</Link>
-              <Link href="/ports/port" className="block px-4 py-2 hover:bg-slate-700">Limbé (Cameroon)</Link>
-            </div>
+          {/* Logo / Brand Name */}
+          <Link href="/" className="flex items-center space-x-3 group">
+            <img 
+              src="/logo.jpg" 
+              alt="MSA Surveys & Services Logo" 
+              className="h-10 w-auto object-contain"
+            />
+            <span className="font-extrabold text-xl text-blue-900 tracking-tight">
+              MSA <span className="text-blue-600 font-normal text-sm">SURVEYS</span>
+            </span>
+          </Link>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden md:flex items-center space-x-8 font-medium text-slate-700">
+            <Link href="/" className="hover:text-blue-600 transition">Home</Link>
+            <Link href="/about" className="hover:text-blue-600 transition">About</Link>
+            <Link href="/services" className="hover:text-blue-600 transition">Services</Link>
+            <Link href="/ports" className="hover:text-blue-600 transition">Ports</Link>
+            <Link href="/gallery" className="hover:text-blue-600 transition">Gallery</Link>
+            <Link href="/contact" className="bg-blue-600 text-white px-5 py-2.5 rounded-xl hover:bg-blue-700 transition shadow-sm">
+              Contact Us
+            </Link>
           </div>
 
-          <Link href="/network" className="hover:text-blue-400">Our Network</Link>
-          
-          {/* Sister Company Link */}
-          <a 
-            href="https://www.marinesurveysafrica.com" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="hover:text-blue-400 text-blue-300 font-semibold"
-          >
-            Marine Surveys Africa ↗
-          </a>
-          <Link href="/contact" className="hover:text-blue-400">Contact</Link>
-        </nav>
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-slate-700 focus:outline-none p-2"
+              aria-label="Toggle Menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+
+        </div>
       </div>
-    </header>
+
+      {/* Mobile Dropdown Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+          <Link href="/" onClick={() => setIsOpen(false)} className="block py-2 text-slate-700 font-medium">Home</Link>
+          <Link href="/about" onClick={() => setIsOpen(false)} className="block py-2 text-slate-700 font-medium">About</Link>
+          <Link href="/services" onClick={() => setIsOpen(false)} className="block py-2 text-slate-700 font-medium">Services</Link>
+          <Link href="/ports" onClick={() => setIsOpen(false)} className="block py-2 text-slate-700 font-medium">Ports</Link>
+          <Link href="/gallery" onClick={() => setIsOpen(false)} className="block py-2 text-slate-700 font-medium">Gallery</Link>
+          <Link href="/contact" onClick={() => setIsOpen(false)} className="block text-center w-full bg-blue-600 text-white px-4 py-3 rounded-xl font-medium mt-2">
+            Contact Us
+          </Link>
+        </div>
+      )}
+    </nav>
   );
 }
