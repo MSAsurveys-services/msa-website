@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://msa-surveysandservices.com/sitemap.xml
