@@ -24,11 +24,12 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8 font-medium text-slate-700">
+          <div className="hidden md:flex items-center space-x-6 font-medium text-slate-700">
             <Link href="/" className="hover:text-blue-600 transition">Home</Link>
             <Link href="/about" className="hover:text-blue-600 transition">About</Link>
             <Link href="/services" className="hover:text-blue-600 transition">Services</Link>
             <Link href="/ports" className="hover:text-blue-600 transition">Ports</Link>
+            <Link href="/network" className="hover:text-blue-600 transition">MSA Network</Link>
             <Link href="/gallery" className="hover:text-blue-600 transition">Gallery</Link>
             <Link href="/contact" className="bg-blue-600 text-white px-5 py-2.5 rounded-xl hover:bg-blue-700 transition shadow-sm">
               Contact Us
@@ -62,6 +63,7 @@ export default function Navbar() {
           <Link href="/about" onClick={() => setIsOpen(false)} className="block py-2 text-slate-700 font-medium">About</Link>
           <Link href="/services" onClick={() => setIsOpen(false)} className="block py-2 text-slate-700 font-medium">Services</Link>
           <Link href="/ports" onClick={() => setIsOpen(false)} className="block py-2 text-slate-700 font-medium">Ports</Link>
+          <Link href="/network" onClick={() => setIsOpen(false)} className="block py-2 text-slate-700 font-medium">MSA Network</Link>
           <Link href="/gallery" onClick={() => setIsOpen(false)} className="block py-2 text-slate-700 font-medium">Gallery</Link>
           <Link href="/contact" onClick={() => setIsOpen(false)} className="block text-center w-full bg-blue-600 text-white px-4 py-3 rounded-xl font-medium mt-2">
             Contact Us
