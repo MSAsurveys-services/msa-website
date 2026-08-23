@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 export const portsData: Record<string, { city: string; country: string; region: string; topPercent: number; leftPercent: number }> = {
   "abidjan": { city: "Abidjan", country: "Ivory Coast", region: "West Africa", topPercent: 54, leftPercent: 28 },
   "algoa-bay": { city: "Algoa Bay", country: "South Africa", region: "Southern Africa", topPercent: 88, leftPercent: 57 },
@@ -86,7 +88,6 @@ const serviceCategories = [
   }
 ];
 
-// Port Operations Gallery Sample Items
 const galleryItems = [
   { title: "Vessel Draft Surveying", desc: "Precise displacement calculations at berth", category: "Inspection" },
   { title: "Container Hold Integrity", desc: "Structural & lock mechanism inspection", category: "Cargo" },
@@ -118,7 +119,6 @@ export default function PortSEOPage({ params }: Props) {
 
   return (
     <div className="bg-slate-50 min-h-screen text-slate-800">
-      {/* HEADER WITH INTEGRATED LOGO */}
       <header className="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3">
@@ -148,7 +148,6 @@ export default function PortSEOPage({ params }: Props) {
           <Link href="/" className="hover:underline">Home</Link> &gt; <span className="text-slate-800 font-semibold">{titleLocation}</span>
         </nav>
 
-        {/* Hero Section */}
         <div className="bg-white border rounded-2xl p-6 md:p-8 shadow-sm mb-8">
           <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">{port.region} Operational Hub</span>
           <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2 mb-4">
@@ -159,7 +158,6 @@ export default function PortSEOPage({ params }: Props) {
           </p>
         </div>
 
-        {/* REAL GRAPHIC MAP OF AFRICA WITH ALL 42 OPERATIONAL PORTS */}
         <div className="bg-slate-900 text-white rounded-2xl p-6 md:p-8 shadow-lg mb-12">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
             <div>
@@ -173,12 +171,10 @@ export default function PortSEOPage({ params }: Props) {
           </div>
 
           <div className="relative w-full h-[520px] bg-slate-950 rounded-xl border border-slate-800 overflow-hidden flex items-center justify-center">
-            {/* Geographic Vector Continental Africa Map */}
             <svg viewBox="0 0 1000 1000" className="w-full h-full opacity-40 fill-slate-800 stroke-blue-500/30 stroke-2">
               <path d="M 320,120 C 450,100 650,110 750,220 C 850,320 880,420 810,530 C 780,580 820,680 750,780 C 680,880 580,980 480,980 C 420,980 420,880 400,780 C 380,680 320,620 220,560 C 120,500 80,380 140,260 C 180,180 250,130 320,120 Z" />
             </svg>
 
-            {/* Dynamic Rendering of All 42 Port Markers */}
             {Object.entries(portsData).map(([key, data]) => {
               const isActive = key === params.slug;
               return (
@@ -212,7 +208,6 @@ export default function PortSEOPage({ params }: Props) {
             })}
           </div>
 
-          {/* Directory Grid */}
           <div className="mt-6 pt-6 border-t border-slate-800">
             <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Directory (All 42 Network Ports)</h3>
             <div className="flex flex-wrap gap-1.5">
@@ -233,7 +228,6 @@ export default function PortSEOPage({ params }: Props) {
           </div>
         </div>
 
-        {/* PORT OPERATIONS & FIELD GALLERY */}
         <div className="mb-12">
           <div className="flex justify-between items-end mb-6">
             <div>
@@ -262,7 +256,6 @@ export default function PortSEOPage({ params }: Props) {
           </div>
         </div>
 
-        {/* 15 Core Services Grid */}
         <h2 className="text-2xl font-bold text-slate-900 mb-6">Specialized Marine & Cargo Surveying Services in {port.city}</h2>
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           {serviceCategories.map((cat, idx) => (
@@ -280,7 +273,6 @@ export default function PortSEOPage({ params }: Props) {
           ))}
         </div>
 
-        {/* Nomination CTA */}
         <div className="bg-slate-900 text-white p-8 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
             <h3 className="text-xl font-bold">Nominate a Marine Surveyor in {port.city}</h3>
