@@ -1,0 +1,1 @@
+export default function ServicesPage() { return (<main className='max-w-5xl mx-auto p-8'><h1 className='text-3xl font-bold'>Our Services</h1><ul className='list-disc pl-6 mt-4 text-gray-700'><li>Bunker Quantity Surveys</li><li>Draft Surveys</li><li>Cargo Damage Inspections</li></ul></main>); }

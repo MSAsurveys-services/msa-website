@@ -1,0 +1,1 @@
+export default function AboutPage() { return (<main className='max-w-5xl mx-auto p-8'><h1 className='text-3xl font-bold'>About MSA Group</h1><p className='mt-4 text-gray-700'>Independent marine and cargo surveying services.</p></main>); }
