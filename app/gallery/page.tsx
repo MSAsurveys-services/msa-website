@@ -1,8 +1,7 @@
 'use client';
 
 export default function GalleryPage() {
-  const totalPhotos = 73;
-  const images = Array.from({ length: totalPhotos }, (_, index) => ({
+  const images = Array.from({ length: 73 }, (_, index) => ({
     id: index + 1,
     src: `/gallery/gallery-${index + 1}.jpg`,
     title: `Port Operation & Marine Survey #${index + 1}`
@@ -13,7 +12,7 @@ export default function GalleryPage() {
       {/* Header */}
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-bold text-gray-900">Operational Gallery</h1>
-        <p className="text-gray-600">Explore our professional marine survey and port inspection operations across Africa.</p>
+        <p className="text-gray-600">Explore our marine survey and port inspection operations across Africa.</p>
       </div>
 
       {/* Responsive Grid Layout */}

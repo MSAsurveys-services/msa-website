@@ -51,7 +51,16 @@ function NavigationWrapper() {
           
           {/* Logo / Brand Name on the Left */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-3">
+              <img 
+                src="/logo.jpg" 
+                alt="MSA Surveys & Services Logo" 
+                className="h-10 w-auto object-contain" 
+                onError={(e) => {
+                  const target = e.target as HTMLElement;
+                  target.style.display = 'none';
+                }}
+              />
               <span className="font-bold text-xl text-blue-900 tracking-tight">
                 MSA Surveys & Services
               </span>
