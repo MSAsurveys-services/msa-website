@@ -4,7 +4,7 @@ export default function GalleryPage() {
   const totalPhotos = 73;
   const images = Array.from({ length: totalPhotos }, (_, index) => ({
     id: index + 1,
-    src: `/images/gallery-${index + 1}.jpg`,
+    src: `/gallery/gallery-${index + 1}.jpg`,
     title: `Port Operation & Marine Survey #${index + 1}`
   }));
 
