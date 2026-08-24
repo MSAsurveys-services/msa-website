@@ -1,12 +1,9 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import './globals.css';
+import Link from 'next/link';
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "MSA Surveys & Services | Global Maritime & Port Operations",
-  description: "Leading marine surveying, container cargo inspection, and port operations across our African network.",
+export const metadata = {
+  title: 'MSA Surveys & Services',
+  description: 'Container cargo inspection and damage surveying services',
 };
 
 export default function RootLayout({
@@ -16,46 +13,92 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        
-        {/* Professional Navigation Bar */}
-        <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-20 items-center">
-              
-              {/* Logo / Brand Name */}
-              <a href="/" className="flex items-center space-x-3 group">
-                <img 
-                  src="/logo.jpg" 
-                  alt="MSA Surveys & Services Logo" 
-                  className="h-10 w-auto object-contain"
-                />
-                <span className="font-extrabold text-xl text-blue-900 tracking-tight">
-                  MSA <span className="text-blue-600 font-normal text-sm">SURVEYS</span>
-                </span>
-              </a>
-
-              {/* Desktop Navigation Links */}
-              <div className="hidden md:flex items-center space-x-6 font-medium text-slate-700">
-                <a href="/" className="hover:text-blue-600 transition">Home</a>
-                <a href="/about" className="hover:text-blue-600 transition">About</a>
-                <a href="/services" className="hover:text-blue-600 transition">Services</a>
-                <a href="/ports" className="hover:text-blue-600 transition">Ports</a>
-                <a href="/network" className="hover:text-blue-600 transition">MSA Network</a>
-                <a href="/gallery" className="hover:text-blue-600 transition">Gallery</a>
-                <a href="/contact" className="bg-blue-600 text-white px-5 py-2.5 rounded-xl hover:bg-blue-700 transition shadow-sm">
-                  Contact Us
-                </a>
-              </div>
-
-            </div>
-          </div>
-        </nav>
-
-        {/* Page Content */}
-        {children}
-
+      <body className="bg-white text-gray-800 antialiased">
+        <NavigationWrapper />
+        <main>{children}</main>
+        <footer className="bg-gray-900 text-white py-8 text-center text-sm">
+          <p>&copy; {new Date().getFullYear()} MSA Surveys & Services. All rights reserved.</p>
+        </footer>
       </body>
     </html>
+  );
+}
+
+// Client-side Navigation Component with Mobile Menu Toggle
+import { useState } from 'react';
+
+function NavigationWrapper() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Ports', href: '/ports' },
+    { name: 'MSA Network', href: '/msa-network' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Contact Us', href: '/contact' },
+  ];
+
+  return (
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          {/* Logo / Brand */}
+          <div className="flex-shrink-0 flex items-center">
+            <Link href="/">
+              <span className="font-bold text-xl text-blue-900">MSA Surveys & Services</span>
+            </Link>
+          </div>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden md:flex space-x-6 items-center">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile Hamburger Button */}
+          <div className="flex md:hidden items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              type="button"
+              className="text-gray-700 hover:text-blue-600 focus:outline-none p-2"
+              aria-label="Toggle Menu"
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {isOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Dropdown Menu Drawer */}
+      {isOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200 px-4 pt-2 pb-4 space-y-2 shadow-lg">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+      )}
+    </nav>
   );
 }
