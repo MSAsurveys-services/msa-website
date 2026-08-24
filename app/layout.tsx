@@ -39,7 +39,7 @@ function NavigationWrapper() {
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services', hasSubmenu: true },
     { name: 'Ports', href: '/ports' },
-    { name: 'MSA Network', href: '/msa-network' },
+    { name: 'MSA Network', href: '/network' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Contact Us', href: '/contact' },
   ];
@@ -48,10 +48,13 @@ function NavigationWrapper() {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center relative">
-          {/* Logo / Brand on the Left */}
+          
+          {/* Logo / Brand Name on the Left */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/">
-              <span className="font-bold text-xl text-blue-900">MSA Surveys & Services</span>
+            <Link href="/" className="flex items-center gap-2">
+              <span className="font-bold text-xl text-blue-900 tracking-tight">
+                MSA Surveys & Services
+              </span>
             </Link>
           </div>
 
@@ -60,7 +63,7 @@ function NavigationWrapper() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="text-gray-700 hover:text-blue-600 focus:outline-none p-2 rounded-lg bg-gray-50 border border-gray-200"
+              className="text-gray-700 hover:text-blue-600 focus:outline-none p-2 rounded-lg bg-gray-50 border border-gray-200 transition"
               aria-label="Toggle Menu"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
