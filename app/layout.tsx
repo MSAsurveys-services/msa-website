@@ -1,10 +1,8 @@
+"use client";
+
 import './globals.css';
 import Link from 'next/link';
-
-export const metadata = {
-  title: 'MSA Surveys & Services',
-  description: 'Container cargo inspection and damage surveying services',
-};
+import { useState } from 'react';
 
 export default function RootLayout({
   children,
@@ -23,9 +21,6 @@ export default function RootLayout({
     </html>
   );
 }
-
-// Client-side Navigation Component with Mobile Menu Toggle
-import { useState } from 'react';
 
 function NavigationWrapper() {
   const [isOpen, setIsOpen] = useState(false);
