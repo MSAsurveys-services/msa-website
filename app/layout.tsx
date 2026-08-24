@@ -46,27 +46,15 @@ function NavigationWrapper() {
             </Link>
           </div>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex space-x-6 items-center">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Mobile Hamburger Button */}
-          <div className="flex md:hidden items-center">
+          {/* Universal Hamburger Button (Shows on Desktop and Mobile) */}
+          <div className="flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="text-gray-700 hover:text-blue-600 focus:outline-none p-2"
+              className="text-gray-700 hover:text-blue-600 focus:outline-none p-2 flex items-center gap-2 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200 transition"
               aria-label="Toggle Menu"
             >
+              <span className="text-sm font-medium px-1 hidden sm:inline">Menu</span>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -79,15 +67,15 @@ function NavigationWrapper() {
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu Drawer */}
+      {/* Dropdown Menu Drawer (Opens on click for all screen sizes) */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 px-4 pt-2 pb-4 space-y-2 shadow-lg">
+        <div className="bg-white border-t border-gray-200 px-4 pt-3 pb-5 space-y-2 shadow-xl max-w-7xl mx-auto">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+              className="block px-4 py-2.5 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors"
             >
               {link.name}
             </Link>

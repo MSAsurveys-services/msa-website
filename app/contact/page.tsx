@@ -18,9 +18,13 @@ export default function ContactSection() {
             <div className="space-y-2 text-gray-700 font-medium">
               <p>
                 <span className="font-semibold text-gray-900">Direct Phone:</span><br />
-                <a href="tel:+237622532310" className="hover:text-blue-600">+237 622532310</a>
+                <a href="tel:+237622532310" className="hover:text-blue-600">+237 622 532 310</a>
                 <span className="text-gray-400 mx-2">/</span>
                 <a href="tel:+19432631653" className="hover:text-blue-600">+1 943 263 1653</a>
+              </p>
+              <p className="pt-2">
+                <span className="font-semibold text-gray-900">Email:</span><br />
+                <a href="mailto:services@marinesurveysafrica.com" className="hover:text-blue-600">services@marinesurveysafrica.com</a>
               </p>
             </div>
           </div>
