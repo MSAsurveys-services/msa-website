@@ -1,64 +1,50 @@
-import Image from 'next/image';
-
-// Automatically generate the list of 73 images based on your clean filenames
-const TOTAL_IMAGES = 73;
-const GALLERY_IMAGES = Array.from({ length: TOTAL_IMAGES }, (_, i) => ({
-  src: `/gallery/gallery-${i + 1}.jpg`,
-  title: `Marine Survey Operation ${i + 1}`, // Generic titles, feel free to customize later
-  port: 'Pan-African Network'               // Generic port, feel free to customize later
-}));
+'use client';
 
 export default function GalleryPage() {
-  return (
-    <main className="min-h-screen bg-slate-50 text-slate-950 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* Header */}
-        <div className="text-center mb-12">
-          <span className="text-blue-600 font-semibold uppercase tracking-wider text-sm">Operational Fieldwork</span>
-          <h1 className="text-4xl font-extrabold mt-2 mb-4 text-slate-950">Marine Survey Gallery</h1>
-          <p className="text-lg text-slate-700 max-w-3xl mx-auto">
-            A visual showcase of our master mariners and technical surveyors attending vessels across our 42 port network. Below is a selection of our recent operations.
-          </p>
-        </div>
+  const totalPhotos = 73;
+  // This generates an array for all 73 photos
+  const images = Array.from({ length: totalPhotos }, (_, index) => ({
+    id: index + 1,
+    src: `/images/gallery-${index + 1}.jpg`, // Ensure your images are in the public/images folder
+    title: `MSA Operation & Port Inspection #${index + 1}`
+  }));
 
-        {/* Image Grid (Responsive) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {GALLERY_IMAGES.map((item, index) => (
-            <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 flex flex-col group hover:shadow-lg transition-shadow duration-300">
-              <div className="relative aspect-[4/3] bg-slate-100 w-full overflow-hidden">
-                {/* Note: Ensure the image files actually exist in public/gallery/ folder */}
-                <img 
-                  src={item.src} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy" // Optimizes page loading
-                />
-              </div>
-              <div className="p-4 flex flex-col flex-grow justify-between">
-                <div>
-                  <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">{item.port}</span>
-                  <h3 className="font-semibold text-slate-900 text-sm mt-1">{item.title}</h3>
-                </div>
-                <div className="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 font-medium flex justify-between items-center">
-                  <span>MSA Global Standards</span>
-                  <span className="text-blue-600">Verified</span>
-                </div>
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-12 space-y-8">
+      <div className="text-center space-y-2">
+        <h1 className="text-3xl font-bold text-gray-900">Operational Gallery</h1>
+        <p className="text-gray-600">Showing all {totalPhotos} professional marine survey and port inspection captures.</p>
+      </div>
+
+      {/* Responsive Grid Layout (Displays multiple photos per row across devices) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {images.map((img) => (
+          <div 
+            key={img.id} 
+            className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition group"
+          >
+            <div className="relative h-48 bg-slate-100 overflow-hidden">
+              <img
+                src={img.src}
+                alt={img.title}
+                onError={(e) => {
+                  // Fallback styling if a specific image file isn't uploaded yet
+                  const target = e.target as HTMLElement;
+                  target.style.display = 'none';
+                }}
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+              />
+              <div className="absolute top-2 left-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-full font-semibold">
+                #{img.id}
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Footer CTA */}
-        <div className="mt-16 text-center bg-white p-8 rounded-2xl border border-slate-100 shadow-inner">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Need a Survey?</h3>
-            <p className="text-slate-600 mb-6 max-w-lg mx-auto">Our surveyors are ready for immediate dispatch to your vessel. Contact our central operations team.</p>
-            <a href="/contact" className="bg-blue-600 text-white font-semibold px-8 py-3 rounded-xl shadow hover:bg-blue-700 transition">
-                Request Vessel Attendance
-            </a>
-        </div>
-
+            <div className="p-4">
+              <h3 className="text-sm font-semibold text-gray-800 truncate">{img.title}</h3>
+              <p className="text-xs text-gray-500 mt-1">MSA Surveys & Services</p>
+            </div>
+          </div>
+        ))}
       </div>
-    </main>
+    </div>
   );
 }
