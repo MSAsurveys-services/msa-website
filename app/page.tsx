@@ -6,7 +6,7 @@ import { PORTS, SERVICES } from '@/data/portsAndServices';
 import { 
   ShieldCheck, MapPin, ChevronDown, Anchor, Scale, Fuel, 
   PackageCheck, Eye, Sparkles, Ship, Box, Calendar, 
-  AlertTriangle, Wrench, Search, Waves, CheckCircle, Clock, Globe
+  AlertTriangle, Wrench, Search, Waves, CheckCircle, Clock, Globe, Mail, MessageCircle
 } from 'lucide-react';
 
 export default function Home() {
@@ -141,14 +141,20 @@ export default function Home() {
                       </div>
                     </div>
 
-                    <div className="px-6 pb-6 pt-2">
+                    <div className="px-6 pb-6 pt-2 flex flex-col sm:flex-row gap-2">
                       <a
-                        href={`https://wa.me/237000000000?text=Hello%20MSA%20Group,%20I%20would%20like%20to%20request%20information%20or%20a%20quote%20for%20${encodeURIComponent(service.title)}.`}
+                        href={`https://wa.me/237622532310?text=Hello%20MSA%20Group,%20I%20would%20like%20to%20request%20information%20or%20a%20quote%20for%20${encodeURIComponent(service.title)}.`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 text-sm transition"
+                        className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 text-xs transition shadow-sm"
                       >
-                        Request via WhatsApp
+                        <MessageCircle className="w-4 h-4" /> WhatsApp
+                      </a>
+                      <a
+                        href={`mailto:services@marinesurveysafrica.com?subject=Inquiry%20regarding%20${encodeURIComponent(service.title)}`}
+                        className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 text-xs transition shadow-sm"
+                      >
+                        <Mail className="w-4 h-4" /> Email
                       </a>
                     </div>
                   </div>
