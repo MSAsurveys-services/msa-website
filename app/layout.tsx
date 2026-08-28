@@ -34,15 +34,21 @@ function NavigationWrapper() {
     { name: 'Damage & Forensic Investigation', href: '/services#damage-forensic' },
   ];
 
-  const navLinks = [
+ const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services', hasSubmenu: true },
+    { name: 'Who We Serve', href: '/clients' }, // <--- Add it right here
     { name: 'Ports', href: '/ports' },
     { name: 'MSA Network', href: '/network' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Contact Us', href: '/contact' },
   ];
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    setServicesOpen(false);
+  };
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -51,7 +57,7 @@ function NavigationWrapper() {
           
           {/* Logo / Brand Name on the Left */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="flex items-center gap-3">
+            <Link href="/" onClick={closeMenu} className="flex items-center gap-3">
               <img 
                 src="/logo.jpg" 
                 alt="MSA Surveys & Services Logo" 
@@ -92,14 +98,17 @@ function NavigationWrapper() {
                     <div className="flex items-center justify-between">
                       <Link
                         href={link.href}
-                        onClick={() => { if (!link.hasSubmenu) setIsOpen(false); }}
+                        onClick={closeMenu}
                         className="flex-1 block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
                       >
                         {link.name}
                       </Link>
                       {link.hasSubmenu && (
                         <button
-                          onClick={() => setServicesOpen(!servicesOpen)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setServicesOpen(!servicesOpen);
+                          }}
                           className="p-2 text-gray-400 hover:text-blue-600 focus:outline-none"
                           aria-label="Toggle Submenu"
                         >
@@ -115,7 +124,7 @@ function NavigationWrapper() {
                           <Link
                             key={sub.name}
                             href={sub.href}
-                            onClick={() => setIsOpen(false)}
+                            onClick={closeMenu}
                             className="block px-2.5 py-1.5 rounded text-xs font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors"
                           >
                             {sub.name}
