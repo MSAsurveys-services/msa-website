@@ -32,7 +32,7 @@ export default function ServicesPage() {
     },
     {
       title: "Project Cargo & Heavy Lift",
-      desc: "Handling oversized industrial machinery, transformers, wind turbines, locomotives, and heavy infrastructure components demands specialized engineering expertise. Our project cargo superintendents oversee every phase of the lifting, stowage, and securing process. We evaluate vessel stability calculations, crane SWL (Safe Working Load) limits, spreader bar setups, and lifting gear certifications. We ensure that all lashing designs comply fully with the vessel's Cargo Securing Manual (CSM) and IMO guidelines, calculating acceleration forces to prevent shifting during heavy ocean passages.",
+      desc: "Handling oversized industrial machinery, transformers, wind turbines, locomotives, and heavy infrastructure components demands specialized engineering expertise. As active members of recognized project cargo networks, our project cargo superintendents oversee every phase of the lifting, stowage, and securing process. We evaluate vessel stability calculations, crane SWL (Safe Working Load) limits, spreader bar setups, and lifting gear certifications. We ensure that all lashing designs comply fully with the vessel's Cargo Securing Manual (CSM) and IMO guidelines, calculating acceleration forces to prevent shifting during heavy ocean passages.",
     },
     {
       title: "Pre-Shipment Inspection (PSI)",
@@ -47,8 +47,8 @@ export default function ServicesPage() {
       desc: "We evaluate shipboard lifting equipment and overall vessel operational readiness to ensure maximum safety and performance. We conduct thorough operational load testing, wire rope inspections, hydraulic system checks, and safety limit switch verifications for ship cranes and derricks. Our comprehensive vessel assessments review machinery status, structural integrity, and compliance with classification society rules, minimizing unexpected breakdown risks during critical port operations.",
     },
     {
-      title: "Cleanliness & Hold Inspection",
-      desc: "Loading sensitive bulk commodities like grain, fertilizer, animal feed, or high-grade minerals requires absolute cargo compartment cleanliness. Our surveyors carry out meticulous pre-loading inspections of ship cargo holds, checking for residues of previous cargoes, rust scale, paint flaking, insect infestation, bilge cleanliness, and odor contamination. Our team executes cleaning standards for both dry and wet conditions strictly in accordance with international maritime laws and charter party agreements (e.g., 'shovel clean', 'grain clean', or 'hospital clean'), issuing formal hold inspection certificates before passing spaces fit to load.",
+      title: "Cargo Hold Cleaning (Dry & Wet Standards)",
+      desc: "Our specialized cleaning teams execute direct cargo hold cleaning operations to ensure vessel compartments meet strict charter party requirements before loading sensitive cargoes like grains, fertilizers, or high-grade minerals. We deploy skilled cleaning crews to perform dry operations—removing loose rust scale, residues, and debris to achieve 'shovel clean' or 'sweep clean' standards—as well as comprehensive wet wash-downs using fresh water and approved chemical detergents to achieve rigorous 'grain clean' or 'hospital clean' standards. By handling the physical cleaning ourselves, we guarantee pristine compartment readiness, proper bilge sanitation, and complete compliance to eliminate cargo rejection risks.",
     },
     {
       title: "Hull & Machinery",
