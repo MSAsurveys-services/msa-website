@@ -1,4 +1,18 @@
+import { Metadata } from "next";
+
 export const dynamic = "force-static";
+
+export function generateMetadata(): Metadata {
+  const canonicalUrl = "https://www.msa-surveysandservices.com/ports";
+
+  return {
+    title: "Our 42-Port African & Indian Ocean Network | MSA Surveys & Services",
+    description: "MSA Surveys & Services provides standardized, rapid-response technical inspection and surveying across 42 major ports in Africa and the Indian Ocean.",
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
 
 export default function PortsPage() {
   const REGIONS = [
@@ -38,7 +52,7 @@ export default function PortsPage() {
             <span className="text-blue-400 font-semibold uppercase tracking-wider text-xs">Pan-African Maritime Grid</span>
             <h2 className="text-3xl font-bold mt-2 mb-3">Live Terminal Tracking Across 42 Hubs</h2>
             <p className="text-slate-300 text-sm leading-relaxed mb-6">
-              Our network spans the continent's most critical shipping lanes. From Central African timber ports to West African container terminals and East African gateways, our regional dispatchers maintain constant contact with port authorities.
+              Our network spans the continent&apos;s most critical shipping lanes. From Central African timber ports to West African container terminals and East African gateways, our regional dispatchers maintain constant contact with port authorities.
             </p>
             <div className="flex flex-wrap gap-3">
               <span className="bg-blue-600/30 border border-blue-400/30 px-3 py-1.5 rounded-lg text-xs font-medium text-blue-300">Central Africa Hubs</span>

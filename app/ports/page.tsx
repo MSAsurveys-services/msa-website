@@ -1,3 +1,19 @@
+import { Metadata } from "next";
+
+export const dynamic = "force-static";
+
+export function generateMetadata(): Metadata {
+  const canonicalUrl = "https://www.msa-surveysandservices.com/ports";
+
+  return {
+    title: "Our 42 Operational Port Terminals | MSA Surveys & Services",
+    description: "Providing rapid response marine surveying, draft surveys, and container cargo inspection across 42 strategic maritime gateways and terminals across the continent.",
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
+
 export default function PortsPage() {
   const regionalHubs = [
     {
